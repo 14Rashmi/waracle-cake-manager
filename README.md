@@ -22,3 +22,11 @@ mvn spring-boot:run
 +Continuous Integration has been implemented using CircleCI.
 +Can be accessed using the link: https://app.circleci.com/pipelines/github/14Rashmi/waracle-cake-manager
 ```
+## Request Body for Post request /cakes
+```
+    {
+        "title": "Lemon 1 Curd cake",
+        "desc": "Lemon 1 curd cake description",
+        "image": "https://www.l1ifeloveandsugar.com/wp-content/uploads/2018/09/Lemon-Curd5.jpg"
+    }
+```
