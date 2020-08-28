@@ -14,6 +14,6 @@ mvn spring-boot:run
 ```
 ## Authentication
 + The Human representation view http://localhost:8080 has been authenticated using github credentials
-+ The GET and POST to "/cakes" can be accessed without any Authentication - to demonstrate that AUthentication can be implemented for selected URLs.
++ The GET and POST to "/cakes" can be accessed without any Authentication - to demonstrate that Authentication can be implemented for selected URLs.
 ```
 
