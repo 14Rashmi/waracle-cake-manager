@@ -13,7 +13,12 @@ mvn spring-boot:run
 + to add a cake make a JSON POST request to the URL http://localhost:8080/cakes
 ```
 ## Authentication
+```
 + The Human representation view http://localhost:8080 has been authenticated using github credentials
 + The GET and POST to "/cakes" can be accessed without any Authentication - to demonstrate that Authentication can be implemented for selected URLs.
 ```
-
+## Continuous Integration
+```
++Continuous Integration has been implemented using CircleCI.
++Can be accessed using the link: https://app.circleci.com/pipelines/github/14Rashmi/waracle-cake-manager
+```
