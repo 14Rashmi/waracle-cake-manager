@@ -114,7 +114,7 @@ public class CakeControllerTest {
 
     @Test
     public void testAddCakeForWebPage() throws Exception {
-        Cake cake = new Cake("New Cake", "New Cake Description", "http://cakeImage.com");
+        Cake cake = new Cake("New Cake1", "New Cake Description1", "http://cakeImage.com");
 
         mvc.perform(post("/addCake")
                 .contentType(MediaType.APPLICATION_JSON)
