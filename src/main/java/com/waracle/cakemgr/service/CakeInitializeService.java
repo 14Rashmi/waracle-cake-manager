@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waracle.cakemgr.domain.Cake;
 import com.waracle.cakemgr.repository.CakeRepository;
-import com.waracle.cakemgr.service.impl.CakeServiceImpl;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,16 +45,20 @@ public class CakeInitializeService {
 
             List<Cake> cakes = mapper.readValue(buffer.toString(), new TypeReference<List<Cake>>() {
             });
-            for (Cake cake : cakes) {
-                try {
-                    repository.save(cake);
-                } catch (Exception ex) {
-                    LOGGER.warn(String.format("Exception occurred while saving cake: %s : ", cake.getTitle(), ex.getMessage()));
-                }
-            }
+            saveAllCakes(cakes);
             LOGGER.info("Saved the initial set of cakes");
         } catch (Exception ex) {
             LOGGER.error("Error occurred while saving initial set of cakes : ", ex);
+        }
+    }
+
+    private void saveAllCakes(List<Cake> cakes) {
+        for (Cake cake : cakes) {
+            try {
+                repository.save(cake);
+            } catch (Exception ex) {
+                LOGGER.warn(String.format("Exception occurred while saving cake: %s : ", cake.getTitle()));
+            }
         }
     }
 }

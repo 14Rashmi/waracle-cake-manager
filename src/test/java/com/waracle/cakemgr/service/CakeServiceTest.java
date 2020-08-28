@@ -5,15 +5,12 @@ import com.waracle.cakemgr.exception.CakeManagerException;
 import com.waracle.cakemgr.repository.CakeRepository;
 import com.waracle.cakemgr.service.impl.CakeServiceImpl;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.ArrayList;
@@ -25,7 +22,8 @@ public class CakeServiceTest {
     @Mock
     CakeRepository cakeRepository;
 
-    @InjectMocks    CakeService cakeService = new CakeServiceImpl();
+    @InjectMocks
+    CakeService cakeService = new CakeServiceImpl();
 
 
     @Test(expected = CakeManagerException.class)

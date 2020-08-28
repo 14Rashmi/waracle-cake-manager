@@ -28,6 +28,15 @@ public class Cake implements Serializable {
     @JsonProperty("image")
     private String image;
 
+    public Cake(String title, String desc, String image) {
+        this.title = title;
+        this.desc = desc;
+        this.image = image;
+    }
+
+    public Cake() {
+    }
+
     public Integer getCakeId() {
         return cakeId;
     }
@@ -67,14 +76,5 @@ public class Cake implements Serializable {
                 "        \"desc\": \"" + desc + "\",\n" +
                 "        \"image\": \"" + image + "\",\n" +
                 "    }";
-    }
-
-    public Cake(String title, String desc, String image) {
-        this.title = title;
-        this.desc = desc;
-        this.image = image;
-    }
-
-    public Cake() {
     }
 }

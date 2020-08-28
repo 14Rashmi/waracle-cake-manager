@@ -1,18 +1,14 @@
 package com.waracle.cakemgr.controller;
 
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.waracle.cakemgr.CakeManagerApplication;
 import com.waracle.cakemgr.domain.Cake;
 import com.waracle.cakemgr.service.CakeService;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,6 +49,7 @@ public class CakeControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(obj);
     }
+
     protected <T> T mapFromJson(String json, Class<T> clazz) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -97,7 +94,7 @@ public class CakeControllerTest {
         status = mvcResult.getResponse().getStatus();
         assertEquals(500, status);
         content = mvcResult.getResponse().getContentAsString();
-        assertEquals(content, "Exception occurred while saving cake: New Cake");
+        assertEquals("Exception occurred while saving cake: New Cake", content);
 
     }
 

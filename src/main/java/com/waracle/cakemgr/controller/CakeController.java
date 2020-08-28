@@ -35,7 +35,7 @@ public class CakeController {
 
     @GetMapping(path = "/cakes")
     public @ResponseBody
-    ResponseEntity cakeDataAsJSON() {
+    ResponseEntity<String> cakeDataAsJSON() {
         List<Cake> cakes = cakeService.retrieveCakes();
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -45,9 +45,9 @@ public class CakeController {
             LOGGER.info("Converted cakes to json format");
         } catch (JsonProcessingException e) {
             LOGGER.error("Error while processing the json", e);
-            return new ResponseEntity("Error while processing the json", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error while processing the json", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity(jsonInString, HttpStatus.OK);
+        return new ResponseEntity<>(jsonInString, HttpStatus.OK);
     }
 
     @PostMapping("/addCake")
@@ -63,13 +63,13 @@ public class CakeController {
 
     @PostMapping(path = "/cakes", consumes = "application/json", produces = "application/json")
     public @ResponseBody
-    ResponseEntity postCakes(@RequestBody Cake cake) {
+    ResponseEntity<String> postCakes(@RequestBody Cake cake) {
         try {
             cakeService.saveCake(cake);
         } catch (CakeManagerException ex) {
-            return new ResponseEntity(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity(cake.toString(), HttpStatus.CREATED);
+        return new ResponseEntity<>(cake.toString(), HttpStatus.CREATED);
     }
 
 }
